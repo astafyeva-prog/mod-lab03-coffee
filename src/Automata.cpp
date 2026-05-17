@@ -1,4 +1,10 @@
-#include "../include/Automata.h"
+// Copyright 2026 Anastasia Astafeva
+
+#include "Automata.h"
+
+#include <iostream>
+#include <string>
+
 
 Automata::Automata() {
     cash = 0;
