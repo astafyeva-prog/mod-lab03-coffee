@@ -1,4 +1,5 @@
-#include "../include/Automata.h"
+// Copyright 2026 Anastasia Astafeva
+#include "Automata.h"
 
 int main() {
 
