@@ -1,5 +1,7 @@
-#include "../include/Automata.h"
+// Copyright 2026 Anastasia Astafeva
+
 #include <gtest/gtest.h>
+#include "Automata.h"
 
 TEST(AutomataTest, OnState) {
     Automata a;
