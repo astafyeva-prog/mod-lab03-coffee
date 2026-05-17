@@ -6,7 +6,8 @@
 #include <vector>
 
 int main() {
-    std::vector<std::string> states = { "OFF", "WAIT", "ACCEPT", "CHECK", "COOK" };
+    std::vector<std::string> states = { "OFF", "WAIT", "ACCEPT", 
+                                        "CHECK", "COOK" };
     Automata cof;
     std::cout << states[cof.getState()] << std::endl;
     std::cout << "Switching on" << std::endl;
@@ -22,7 +23,8 @@ int main() {
     std::cout << states[cof.getState()] << std::endl;
     cof.coin();
     std::cout << states[cof.getState()] << std::endl;
-    std::cout << "Hehe, let's try to buy coffee with only 2 coins." << std::endl;
+    std::cout << "Hehe, let's try to buy coffee with only 2 coins." 
+              << std::endl;
     cof.choice("Coffee");
     std::cout << states[cof.getState()] << std::endl;
     std::cout << "Hmmm, nothing. Okay then. I'll buy tea" << std::endl;
