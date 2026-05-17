@@ -1,7 +1,9 @@
-
 // Copyright 2026 Astafeva Anastasiia
 
 #include "Automata.h"
+#include <string>
+#include <vector>
+#include <iostream>
 
 Automata::Automata() {
     cash = 0;
@@ -13,7 +15,6 @@ Automata::Automata() {
 void Automata::on() {
     if (state == OFF) state = WAIT;
 }
-
 
 void Automata::off() {
     if (state == WAIT) state = OFF;
@@ -49,9 +50,7 @@ void Automata::cancel() {
 
 void Automata::cook() {
     state = COOK;
-
     // abracadabra
-
     finish();
 }
 
@@ -60,10 +59,9 @@ void Automata::finish() {
 }
 
 std::vector<std::string> Automata::getMenu() {
-    std::vector <std::string> mp;
+    std::vector<std::string> mp;
     for (int i = 0; i < menu.size(); i++) {
-        mp.push_back(menu[i] + " - "
-            + std::to_string(prices[i]));
+        mp.push_back(menu[i] + " - " + std::to_string(prices[i]));
     }
     return mp;
 }
