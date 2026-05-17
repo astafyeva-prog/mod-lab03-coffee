@@ -1,10 +1,10 @@
 // Copyright 2026 Astafeva Anastasiia
 
+#include "Automata.h"
 #include <gtest/gtest.h>
 #include <sstream>
-#include <string>   
-#include <vector>   
-#include "Automata.h"
+#include <string>
+#include <vector>
 
 TEST(correct_transition, test1) {
     Automata a;
@@ -46,7 +46,7 @@ TEST(correct_transition, test5) {
 
 TEST(correct_transition, test6) {
     Automata a;
-    std::vector <std::string> s = a.getMenu();
+    std::vector<std::string> s = a.getMenu();
     std::stringstream ss(s[0]);
     std::string name;
     std::getline(ss, name, ' ');
@@ -65,7 +65,7 @@ TEST(correct_transition, test6) {
 
 TEST(correct_transition, test7) {
     Automata a;
-    std::vector <std::string> s = a.getMenu();
+    std::vector<std::string> s = a.getMenu();
     std::stringstream ss(s[0]);
     std::string name;
     std::getline(ss, name, ' ');
@@ -84,7 +84,7 @@ TEST(correct_transition, test7) {
 
 TEST(correct_transition, test8) {
     Automata a;
-    std::vector <std::string> s = a.getMenu();
+    std::vector<std::string> s = a.getMenu();
     std::stringstream ss(s[0]);
     std::string name;
     std::getline(ss, name, ' ');
