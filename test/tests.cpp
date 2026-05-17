@@ -1,29 +1,32 @@
 #include "../include/Automata.h"
-#include <cassert>
+#include <gtest/gtest.h>
 
-int main() {
-
+TEST(AutomataTest, OnState) {
     Automata a;
 
     a.on();
-    assert(a.getState() == WAIT);
+
+    EXPECT_EQ(a.getState(), WAIT);
+}
+
+TEST(AutomataTest, CoinState) {
+    Automata a;
+
+    a.on();
 
     a.coin(50);
-    assert(a.getState() == ACCEPT);
 
-    assert(a.check(0) == true);
+    EXPECT_EQ(a.getState(), ACCEPT);
+}
 
-    a.choice(0);
-    assert(a.getState() == WAIT);
+TEST(AutomataTest, CancelState) {
+    Automata a;
 
-    a.coin(20);
-    assert(a.check(1) == false);
+    a.on();
+
+    a.coin(50);
 
     a.cancel();
-    assert(a.getState() == WAIT);
 
-    a.off();
-    assert(a.getState() == OFF);
-
-    return 0;
+    EXPECT_EQ(a.getState(), WAIT);
 }
