@@ -1,34 +1,117 @@
-// Copyright 2026 Anastasia Astafeva
+// Copyright 2026 Astafeva Anastasiia
 
 #include <gtest/gtest.h>
+#include <sstream>
 #include "Automata.h"
 
-TEST(AutomataTest, OnState) {
+TEST(correct_transition, test1) {
     Automata a;
-
     a.on();
-
-    EXPECT_EQ(a.getState(), WAIT);
+    STATES result = a.getState();
+    EXPECT_EQ(WAIT, result);
 }
 
-TEST(AutomataTest, CoinState) {
+TEST(correct_transition, test2) {
     Automata a;
-
-    a.on();
-
-    a.coin(50);
-
-    EXPECT_EQ(a.getState(), ACCEPT);
+    STATES result = a.getState();
+    EXPECT_EQ(OFF, result);
 }
 
-TEST(AutomataTest, CancelState) {
+TEST(correct_transition, test3) {
     Automata a;
-
     a.on();
+    a.off();
+    STATES result = a.getState();
+    EXPECT_EQ(OFF, result);
+}
 
-    a.coin(50);
+TEST(correct_transition, test4) {
+    Automata a;
+    a.on();
+    a.coin();
+    STATES result = a.getState();
+    EXPECT_EQ(ACCEPT, result);
+}
 
+TEST(correct_transition, test5) {
+    Automata a;
+    a.on();
+    a.coin();
+    a.coin();
+    STATES result = a.getState();
+    EXPECT_EQ(ACCEPT, result);
+}
+
+TEST(correct_transition, test6) {
+    Automata a;
+    std::vector <std::string> s = a.getMenu();
+    std::stringstream ss(s[0]);
+    std::string name;
+    std::getline(ss, name, ' ');
+    int coins;
+    std::string buff;
+    std::getline(ss, buff, ' ');
+    std::getline(ss, buff, ' ');
+    coins = std::stoi(buff);
+    a.on();
+    for (int i = 0; i < coins; i++)
+        a.coin();
+    a.choice(name);
+    STATES result = a.getState();
+    EXPECT_EQ(WAIT, result);
+}
+
+TEST(correct_transition, test7) {
+    Automata a;
+    std::vector <std::string> s = a.getMenu();
+    std::stringstream ss(s[0]);
+    std::string name;
+    std::getline(ss, name, ' ');
+    int coins;
+    std::string buff;
+    std::getline(ss, buff, ' ');
+    std::getline(ss, buff, ' ');
+    coins = std::stoi(buff);
+    a.on();
+    for (int i = 0; i < coins - 1; i++)
+        a.coin();
+    a.choice(name);
+    STATES result = a.getState();
+    EXPECT_EQ(CHECK, result);
+}
+
+TEST(correct_transition, test8) {
+    Automata a;
+    std::vector <std::string> s = a.getMenu();
+    std::stringstream ss(s[0]);
+    std::string name;
+    std::getline(ss, name, ' ');
+    int coins;
+    std::string buff;
+    std::getline(ss, buff, ' ');
+    std::getline(ss, buff, ' ');
+    coins = std::stoi(buff);
+    a.on();
+    for (int i = 0; i < coins - 1; i++)
+        a.coin();
+    a.choice(name);
     a.cancel();
+    STATES result = a.getState();
+    EXPECT_EQ(WAIT, result);
+}
 
-    EXPECT_EQ(a.getState(), WAIT);
+TEST(correct_transition, test9) {
+    Automata a;
+    a.on();
+    a.coin();
+    a.cancel();
+    STATES result = a.getState();
+    EXPECT_EQ(ACCEPT, result);
+}
+
+TEST(correct_transition, test10) {
+    Automata a;
+    a.coin();
+    STATES result = a.getState();
+    EXPECT_EQ(OFF, result);
 }
