@@ -1,39 +1,33 @@
-// Copyright 2026 Anastasia Astafeva
+
+// Copyright 2026 Astafeva Anastasiia
 
 #ifndef INCLUDE_AUTOMATA_H_
 #define INCLUDE_AUTOMATA_H_
-
+#include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
-enum STATES {
-  OFF,
-  WAIT,
-  ACCEPT,
-  CHECK,
-  COOK
-};
+enum STATES { OFF, WAIT, ACCEPT, CHECK, COOK };
 
 class Automata {
- public:
-  Automata();
-
-  void on();
-  void off();
-  void coin(int value);
-  void getMenu();
-  STATES getState();
-  void choice(int index);
-  bool check(int index);
-  void cancel();
-  void cook(std::string drink);
-  void finish();
-
  private:
-  int cash;
-  std::vector<std::string> menu;
-  std::vector<int> prices;
-  STATES state;
+    int cash;
+    std::vector <std::string> menu;
+    std::vector <int> prices;
+    STATES state;
+ public:
+    Automata();
+    void on();
+    void off();
+    int coin();
+    std::vector <std::string> getMenu();
+    STATES getState();
+    void choice(std::string choice);
+    void cancel();
+ private:
+    void cook();
+    void finish();
 };
 
 #endif  // INCLUDE_AUTOMATA_H_
