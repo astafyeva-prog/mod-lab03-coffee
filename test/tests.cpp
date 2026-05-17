@@ -2,6 +2,8 @@
 
 #include <gtest/gtest.h>
 #include <sstream>
+#include <string>   
+#include <vector>   
 #include "Automata.h"
 
 TEST(correct_transition, test1) {
